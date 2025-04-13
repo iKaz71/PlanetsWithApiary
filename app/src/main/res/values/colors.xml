@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="background_space">#0B0F2F</color>
+    <color name="text_light">#FFFFFF</color>
+
+    <color name="gray">#888888</color>
+    <color name="dark_blue">#0A0D2E</color>
+
+    <color name="space_navy">#0A0F2C</color> <!-- Azul espacial profundo -->
+    <color name="midnight">#1C1B33</color>   <!-- Azul noche -->
+    <color name="deep_galaxy">#14142B</color> <!-- Gris azulado oscuro -->
+    <color name="night_black">#0B0B0B</color> <!-- Casi negro -->
+    <color name="light_gray">#F2F2F2</color>
+    <color name="black">#000000</color>
+
+
+
+
+
+
+
+</resources>

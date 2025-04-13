@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Planetas</string>
+    <string name="logo_app">Logotipo de la aplicación</string>
+
+    <string name="planet_name_placeholder">Nombre del planeta</string>
+
+
+
+    <string name="splash_loading">Cargando universo...</string>
+
+
+    <string name="no_data_error">No se pudo obtener información. ¿Tienes internet?</string>
+    <string name="loading_msg_1">Conectando con la NASA...</string>
+    <string name="loading_msg_2">Revisando si Plutón ya volvió...</string>
+    <string name="loading_msg_3">Desempolvando telescopios antiguos...</string>
+    <string name="loading_msg_4">Midiendo la distancia a Marte... otra vez.</string>
+    <string name="loading_msg_5">Preguntando a un marciano...</string>
+    <string name="loading_msg_6">Recibiendo señales de Júpiter</string>
+    <string name="loading_msg_7">Calculando el tamaño de Saturno (otra vez)...</string>
+    <string name="loading_msg_8">Cargando polvo cósmico...</string>
+    <string name="loading_msg_9">Girando alrededor del sol mientras esperas</string>
+    <string name="loading_msg_10">¡Oye! Neptuno no quiso colaborar hoy...</string>
+    <string name="loading_msg_11">Traduciendo jeroglíficos alienígenas</string>
+    <string name="loading_msg_12">Revisando si hay vida en Venus...</string>
+    <string name="loading_msg_13">Haciendo un picnic en la Luna...</string>
+    <string name="loading_msg_14">Actualizando el GPS intergaláctico...</string>
+    <string name="loading_msg_15">Poniendo en fila a los planetas...</string>
+    <string name="loading_msg_16">Haciendo zoom en una supernova...</string>
+    <string name="loading_msg_17">Calculando cuántos pasos hay hasta Mercurio...</string>
+    <string name="loading_msg_18">Evadiendo meteoritos como profesionales</string>
+    <string name="loading_msg_19">Consultando a Carl Sagan... en espíritu</string>
+    <string name="loading_default">Esperando datos...</string>
+
+
+    <string name="planet_image">Imagen del planeta</string>
+    <string name="distance_sun_km">Distancia al Sol: %1$s millones de km</string>
+    <string name="diameter_km">Diámetro: %1$s km</string>
+    <string name="moons_count">Lunas: %1$s</string>
+    <string name="has_rings_yes">Tiene anillos</string>
+    <string name="has_rings_no">No tiene anillos</string>
+    <string name="position_in_solar_system">Posición en el sistema solar: %1$d</string>
+
+</resources>
+
