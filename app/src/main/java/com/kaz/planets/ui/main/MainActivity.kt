@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.loading_msg_19)
         )
 
-
         messageRunnable = object : Runnable {
             override fun run() {
                 val randomMessage = messages.random()
@@ -62,7 +61,6 @@ class MainActivity : AppCompatActivity() {
                 handler.postDelayed(this, 2000)
             }
         }
-
         handler.post(messageRunnable)
 
         val adapter = PlanetAdapter { planet ->
@@ -70,7 +68,6 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("planet", planet)
             startActivity(intent)
         }
-
 
         binding.recyclerViewPlanets.visibility = View.GONE
         binding.progressBar.visibility = View.VISIBLE

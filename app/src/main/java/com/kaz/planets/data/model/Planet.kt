@@ -9,5 +9,7 @@ data class Planet(
     val diameter: Int,
     val moons: Int,
     val has_rings: Boolean,
-    val image_url: String
+    val image_url: String,
+    val videoUrl: String,
+    val audioEffect: String
 ) : Serializable

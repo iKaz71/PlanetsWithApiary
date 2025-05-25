@@ -74,7 +74,18 @@
                     android:id="@+id/textPosition"
                     style="@style/PlanetDetailText"/>
 
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:id="@+id/youtubePlayerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginTop="16dp" />
+
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
+
+
+
     </LinearLayout>
 </ScrollView>

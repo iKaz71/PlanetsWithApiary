@@ -64,5 +64,6 @@ dependencies {
     implementation (libs.androidx.lifecycle.livedata.ktx)
     implementation (libs.androidx.recyclerview)
     implementation(libs.glide.v4151)
+    implementation (libs.core)
 
 }

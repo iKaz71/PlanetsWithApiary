@@ -6,11 +6,7 @@
 
     <string name="planet_name_placeholder">Nombre del planeta</string>
 
-
-
     <string name="splash_loading">Cargando universo...</string>
-
-
     <string name="no_data_error">No se pudo obtener información. ¿Tienes internet?</string>
     <string name="loading_msg_1">Conectando con la NASA...</string>
     <string name="loading_msg_2">Revisando si Plutón ya volvió...</string>
@@ -32,12 +28,10 @@
     <string name="loading_msg_18">Evadiendo meteoritos como profesionales</string>
     <string name="loading_msg_19">Consultando a Carl Sagan... en espíritu</string>
     <string name="loading_default">Esperando datos...</string>
-
-
     <string name="planet_image">Imagen del planeta</string>
-    <string name="distance_sun_km">Distancia al Sol: %1$s millones de km</string>
-    <string name="diameter_km">Diámetro: %1$s km</string>
-    <string name="moons_count">Lunas: %1$s</string>
+    <string name="distance_sun_km">Distancia al Sol: %1$.1f millones de km</string>
+    <string name="diameter_km">Diámetro: %1$d km</string>
+    <string name="moons_count">Lunas: %1$d</string>
     <string name="has_rings_yes">Tiene anillos</string>
     <string name="has_rings_no">No tiene anillos</string>
     <string name="position_in_solar_system">Posición en el sistema solar: %1$d</string>
