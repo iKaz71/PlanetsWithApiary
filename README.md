@@ -4,17 +4,25 @@
 
 ## 🚀 Características
 
-- Pantalla de **splash** al iniciar la app con un diseño temático espacial.
-- **Consumo de API REST** con Retrofit usando endpoints generados en Apiary.
-- Pantalla principal que muestra una lista de planetas con imagen y nombre.
-- Al seleccionar un planeta, se abre una pantalla con **detalles completos**:
-  - Distancia al sol
+- Pantalla de **splash** con temática espacial al iniciar la app.
+- **Consumo de API REST** con Retrofit usando endpoints definidos en Apiary.
+- Pantalla principal con una lista de planetas que incluye:
+  - Imagen
+  - Nombre
+- Al seleccionar un planeta, se accede a una pantalla con **detalles completos**:
+  - Distancia al Sol
   - Diámetro
   - Cantidad de lunas
   - Presencia de anillos
   - Posición en el sistema solar
-- **Animación de carga** con mensajes aleatorios y graciosos mientras se descargan los datos.
-- Manejo de errores con mensajes amigables para el usuario.
+  - **Video educativo embebido desde YouTube**
+  - **Reproducción de sonido local** distintivo por planeta
+- Botón de pantalla completa que permite ver el video horizontalmente en una nueva actividad.
+- El sonido local se detiene automáticamente cuando inicia el video.
+- **Animación de carga** con frases aleatorias y divertidas.
+- **Bloqueo de rotación global** excepto en la pantalla de video.
+- Manejo de errores con mensajes claros y amigables.
+
 
 
 ## 🧪 Tecnologías utilizadas
@@ -25,6 +33,8 @@
 - ViewBinding
 - Retrofit + GSON
 - Glide
+- [Android YouTube Player API (modern)](https://github.com/PierfrancescoSoffritti/android-youtube-player)
+
 
 ## 🖼️ Capturas de pantalla
 
