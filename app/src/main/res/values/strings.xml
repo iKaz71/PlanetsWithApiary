@@ -49,6 +49,7 @@
 
     <string name="logout_message">¿Seguro que quieres cerrar sesión?</string>
     <string name="logout_yes">Sí</string>
+    <string name="logout_no">No</string>
     <string name="connection_restored">Conexión restablecida. Recargando...</string>
     <string name="no_internet">Sin conexión a Internet</string>
 

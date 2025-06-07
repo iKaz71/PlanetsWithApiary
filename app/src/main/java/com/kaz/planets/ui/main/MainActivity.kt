@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }
-                .setNegativeButton(getString(R.string.no_internet)) { dialog, _ -> dialog.dismiss() }
+                .setNegativeButton(getString(R.string.logout_no)) { dialog, _ -> dialog.dismiss() }
                 .show()
         }
 
