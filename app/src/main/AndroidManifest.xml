@@ -37,6 +37,17 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="landscape" />
 
+        <activity
+            android:name=".auth.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".auth.RegisterActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".auth.ForgotPasswordActivity"
+            android:screenOrientation="portrait"/>
+
+
 
     </application>
 

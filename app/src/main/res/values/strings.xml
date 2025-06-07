@@ -36,5 +36,19 @@
     <string name="has_rings_no">No tiene anillos</string>
     <string name="position_in_solar_system">Posición en el sistema solar: %1$d</string>
 
+
+    <string name="register">Registrarse</string>
+    <string name="reset_password">Recuperar contraseña</string>
+    <string name="forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="no_account_register">¿No tienes cuenta? Regístrate</string>
+    <string name="already_have_account_login">¿Ya tienes cuenta? Inicia sesión</string>
+    <string name="back_to_login">Volver al inicio de sesión</string>
+    <string name="logout">Cerrar sesión</string>
+
+
 </resources>
 

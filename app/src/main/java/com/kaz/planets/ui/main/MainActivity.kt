@@ -1,5 +1,6 @@
 package com.kaz.planets.ui.main
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -14,7 +15,8 @@ import com.kaz.planets.ui.detail.DetailActivity
 import com.kaz.planets.ui.adapter.PlanetAdapter
 import com.kaz.planets.viewmodel.PlanetViewModel
 import com.kaz.planets.R
-
+import com.google.firebase.auth.FirebaseAuth
+import com.kaz.planets.auth.LoginActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,9 +30,34 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user == null) {
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+            finish()
+            return
+        }
+
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.logoutButton.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("Cerrar sesión")
+                .setMessage("¿Seguro que quieres cerrar sesión?")
+                .setPositiveButton("Sí") { dialog, _ ->
+                    FirebaseAuth.getInstance().signOut()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent)
+                    finish()
+                }
+                .setNegativeButton("No") { dialog, _ -> dialog.dismiss() }
+                .show()
+        }
 
         messages = listOf(
             getString(R.string.loading_msg_1),
