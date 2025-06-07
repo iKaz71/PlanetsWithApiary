@@ -35,11 +35,11 @@ class LoginActivity : AppCompatActivity() {
                             startActivity(Intent(this, com.kaz.planets.ui.main.MainActivity::class.java))
                             finish()
                         } else {
-                            Toast.makeText(this, "Usuario o contraseña incorrectos.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, getString(R.string.login_error), Toast.LENGTH_SHORT).show()
                         }
                     }
             } else {
-                Toast.makeText(this, "Completa todos los campos.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.fill_all_fields), Toast.LENGTH_SHORT).show()
             }
         }
 

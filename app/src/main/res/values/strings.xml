@@ -47,5 +47,24 @@
     <string name="back_to_login">Volver al inicio de sesión</string>
     <string name="logout">Cerrar sesión</string>
 
+    <string name="logout_message">¿Seguro que quieres cerrar sesión?</string>
+    <string name="logout_yes">Sí</string>
+    <string name="connection_restored">Conexión restablecida. Recargando...</string>
+    <string name="no_internet">Sin conexión a Internet</string>
+
+    <string name="register_success">Registro exitoso.</string>
+    <string name="register_error">Error en el registro.</string>
+    <string name="password_mismatch">Las contraseñas no coinciden.</string>
+    <string name="fill_all_fields">Completa todos los campos.</string>
+
+    <string name="recovery_mail_sent">Correo de recuperación enviado.</string>
+    <string name="recovery_mail_error">Error al enviar el correo.</string>
+    <string name="enter_email">Ingresa tu correo.</string>
+
+    <string name="login_error">Usuario o contraseña incorrectos.</string>
+
+
+
+
 
 </resources>

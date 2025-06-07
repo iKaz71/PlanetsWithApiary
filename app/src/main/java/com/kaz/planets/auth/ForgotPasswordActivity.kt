@@ -26,14 +26,14 @@ class ForgotPasswordActivity : AppCompatActivity() {
                 auth.sendPasswordResetEmail(email)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(this, "Correo de recuperación enviado.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, getString(R.string.recovery_mail_sent), Toast.LENGTH_SHORT).show()
                             finish()
                         } else {
-                            Toast.makeText(this, "Error al enviar el correo.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, getString(R.string.recovery_mail_error), Toast.LENGTH_SHORT).show()
                         }
                     }
             } else {
-                Toast.makeText(this, "Ingresa tu correo.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.enter_email), Toast.LENGTH_SHORT).show()
             }
         }
 

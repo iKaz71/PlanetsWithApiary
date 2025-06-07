@@ -46,16 +46,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.logoutButton.setOnClickListener {
             AlertDialog.Builder(this)
-                .setTitle("Cerrar sesión")
-                .setMessage("¿Seguro que quieres cerrar sesión?")
-                .setPositiveButton("Sí") { dialog, _ ->
+                .setTitle(getString(R.string.logout))
+                .setMessage(getString(R.string.logout_message))
+                .setPositiveButton(getString(R.string.logout_yes)) { dialog, _ ->
                     FirebaseAuth.getInstance().signOut()
                     val intent = Intent(this, LoginActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
                     finish()
                 }
-                .setNegativeButton("No") { dialog, _ -> dialog.dismiss() }
+                .setNegativeButton(getString(R.string.no_internet)) { dialog, _ -> dialog.dismiss() }
                 .show()
         }
 
@@ -116,10 +116,10 @@ class MainActivity : AppCompatActivity() {
 
         NetworkMonitor.isConnected.observe(this) { connected ->
             if (connected) {
-                Snackbar.make(binding.root, "Conexión restablecida. Recargando...", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, getString(R.string.connection_restored), Snackbar.LENGTH_SHORT).show()
                 viewModel.fetchPlanets()
             } else {
-                Snackbar.make(binding.root, "Sin conexión a Internet", Snackbar.LENGTH_INDEFINITE).show()
+                Snackbar.make(binding.root, getString(R.string.no_internet), Snackbar.LENGTH_INDEFINITE).show()
             }
         }
     }

@@ -32,17 +32,17 @@ class RegisterActivity : AppCompatActivity() {
                     auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
-                                Toast.makeText(this, "Registro exitoso.", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, getString(R.string.register_success), Toast.LENGTH_SHORT).show()
                                 finish()
                             } else {
-                                Toast.makeText(this, "Error en el registro.", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, getString(R.string.register_error), Toast.LENGTH_SHORT).show()
                             }
                         }
                 } else {
-                    Toast.makeText(this, "Las contraseñas no coinciden.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.password_mismatch), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Completa todos los campos.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.fill_all_fields), Toast.LENGTH_SHORT).show()
             }
         }
 
