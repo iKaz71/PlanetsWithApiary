@@ -17,6 +17,8 @@ import com.kaz.planets.viewmodel.PlanetViewModel
 import com.kaz.planets.R
 import com.google.firebase.auth.FirebaseAuth
 import com.kaz.planets.auth.LoginActivity
+import com.kaz.planets.utils.NetworkMonitor
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,7 +33,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         val user = FirebaseAuth.getInstance().currentUser
         if (user == null) {
             val intent = Intent(this, LoginActivity::class.java)
@@ -40,7 +41,6 @@ class MainActivity : AppCompatActivity() {
             finish()
             return
         }
-
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -111,6 +111,15 @@ class MainActivity : AppCompatActivity() {
                 binding.progressBar.visibility = View.GONE
                 binding.loadingMessage.visibility = View.GONE
                 handler.removeCallbacks(messageRunnable)
+            }
+        }
+
+        NetworkMonitor.isConnected.observe(this) { connected ->
+            if (connected) {
+                Snackbar.make(binding.root, "Conexión restablecida. Recargando...", Snackbar.LENGTH_SHORT).show()
+                viewModel.fetchPlanets()
+            } else {
+                Snackbar.make(binding.root, "Sin conexión a Internet", Snackbar.LENGTH_INDEFINITE).show()
             }
         }
     }
