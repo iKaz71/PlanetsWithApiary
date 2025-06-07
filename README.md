@@ -6,6 +6,8 @@
 
 - Pantalla de **splash** con temática espacial al iniciar la app.
 - **Consumo de API REST** con Retrofit usando endpoints definidos en Apiary.
+- Uso de Firebase para registro con correo y recuperación de contraseña
+- Mostramos una ubicación utilizando la herramienta de Google maps con indicador personalizado
 - Pantalla principal con una lista de planetas que incluye:
   - Imagen
   - Nombre
