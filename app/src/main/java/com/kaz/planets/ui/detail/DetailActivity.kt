@@ -7,19 +7,27 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.kaz.planets.R
 import com.kaz.planets.auth.LoginActivity
-import com.kaz.planets.databinding.ActivityDetailBinding
 import com.kaz.planets.data.model.Planet
+import com.kaz.planets.databinding.ActivityDetailBinding
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityDetailBinding
     private var mediaPlayer: MediaPlayer? = null
+    private lateinit var googleMap: GoogleMap
 
     @SuppressLint("StringFormatMatches")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,59 +61,68 @@ class DetailActivity : AppCompatActivity() {
 
             Glide.with(this).load(p.image_url).into(binding.imagePlanetDetail)
 
-            if (!p.audioEffect.isNullOrEmpty()) {
-                val soundName = p.audioEffect.replace(".mp3", "")
-                val soundResId = resources.getIdentifier(soundName, "raw", packageName)
+            val soundName = p.audioEffect.replace(".mp3", "")
+            val soundResId = resources.getIdentifier(soundName, "raw", packageName)
 
-                if (soundResId != 0) {
-                    mediaPlayer?.release()
-                    mediaPlayer = MediaPlayer.create(this, soundResId)
-                    mediaPlayer?.start()
+            if (soundResId != 0) {
+                mediaPlayer?.release()
+                mediaPlayer = MediaPlayer.create(this, soundResId)
+                mediaPlayer?.start()
+            }
+
+            lifecycle.addObserver(binding.youtubePlayerView)
+
+            val videoId = p.videoUrl.substringAfter("v=")
+
+            binding.youtubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+                override fun onReady(youTubePlayer: YouTubePlayer) {
+                    val uiController = DefaultPlayerUiController(binding.youtubePlayerView, youTubePlayer)
+                    binding.youtubePlayerView.setCustomPlayerUi(uiController.rootView)
+
+                    uiController.showFullscreenButton(true)
+                    uiController.setFullScreenButtonClickListener {
+                        val intent = Intent(this@DetailActivity, FullscreenActivity::class.java)
+                        intent.putExtra("videoId", videoId)
+                        startActivity(intent)
+                    }
+
+                    youTubePlayer.cueVideo(videoId, 0f)
                 }
-            }
 
-            // Reproducimos video con YouTubePlayerView
-            val youtubePlayerView = binding.youtubePlayerView
-            lifecycle.addObserver(youtubePlayerView)
-
-            if (!p.videoUrl.isNullOrEmpty()) {
-                val videoId = p.videoUrl.substringAfter("v=")
-
-                youtubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
-                    override fun onReady(youTubePlayer: YouTubePlayer) {
-                        val uiController = DefaultPlayerUiController(youtubePlayerView, youTubePlayer)
-                        youtubePlayerView.setCustomPlayerUi(uiController.rootView)
-
-                        uiController.showFullscreenButton(true)
-                        uiController.setFullScreenButtonClickListener {
-                            // Lanzamos actividad de pantalla completa
-                            val intent = Intent(this@DetailActivity, FullscreenActivity::class.java)
-                            intent.putExtra("videoId", videoId)
-                            startActivity(intent)
-                        }
-
-                        youTubePlayer.cueVideo(videoId, 0f)
+                override fun onStateChange(
+                    youTubePlayer: YouTubePlayer,
+                    state: com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants.PlayerState
+                ) {
+                    if (state == com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants.PlayerState.PLAYING) {
+                        mediaPlayer?.pause()
+                        mediaPlayer?.release()
+                        mediaPlayer = null
                     }
+                }
+            })
+        }
 
-                    override fun onStateChange(
-                        youTubePlayer: YouTubePlayer,
-                        state: com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants.PlayerState
-                    ) {
-                        if (state == com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants.PlayerState.PLAYING) {
-                            mediaPlayer?.let {
-                                if (it.isPlaying) {
-                                    it.pause()
-                                    it.release()
-                                    mediaPlayer = null
-                                    Log.d("AUDIO_DEBUG", "Audio local detenido porque el video comenzo")
-                                }
-                            }
-                        }
-                    }
-                })
-            }
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+    }
+
+    override fun onMapReady(map: GoogleMap) {
+        googleMap = map
+
+        val planet = intent.getSerializableExtra("planet") as? Planet
+        planet?.let {
+            val location = LatLng(it.latitude, it.longitude)
+
+            googleMap.addMarker(
+                MarkerOptions()
+                    .position(location)
+                    .title(it.name)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.planeta))
+            )
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 5f))
         }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

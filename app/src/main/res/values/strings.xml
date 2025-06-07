@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Planetas</string>
     <string name="logo_app">Logotipo de la aplicación</string>
 
@@ -36,7 +35,6 @@
     <string name="has_rings_no">No tiene anillos</string>
     <string name="position_in_solar_system">Posición en el sistema solar: %1$d</string>
 
-
     <string name="register">Registrarse</string>
     <string name="reset_password">Recuperar contraseña</string>
     <string name="forgot_password">¿Olvidaste tu contraseña?</string>
@@ -51,4 +49,3 @@
 
 
 </resources>
-

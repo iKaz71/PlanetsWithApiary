@@ -11,5 +11,7 @@ data class Planet(
     val has_rings: Boolean,
     val image_url: String,
     val videoUrl: String,
-    val audioEffect: String
+    val audioEffect: String,
+    val latitude: Double,
+    val longitude: Double
 ) : Serializable
